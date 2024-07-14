@@ -1,47 +1,50 @@
-// Copyright 2021, the Flutter project authors. Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-import 'dart:io' show Platform;
-
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:url_strategy/url_strategy.dart';
-import 'package:window_size/window_size.dart';
-
-import 'src/app.dart';
+import 'package:navegacion/app1/place_tracker_app.dart';
+import 'package:navegacion/app2/src/app.dart';
 
 void main() {
-  // Use package:url_strategy until this pull request is released:
-  // https://github.com/flutter/flutter/pull/77103
-
-  // Use to setHashUrlStrategy() to use "/#/" in the address bar (default). Use
-  // setPathUrlStrategy() to use the path. You may need to configure your web
-  // server to redirect all paths to index.html.
-  //
-  // On mobile platforms, both functions are no-ops.
-  setHashUrlStrategy();
-  // setPathUrlStrategy();
-
-  setupWindow();
-  runApp(const Bookstore());
+  runApp(const MyApp());
 }
 
-const double windowWidth = 480;
-const double windowHeight = 854;
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-void setupWindow() {
-  if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
-    WidgetsFlutterBinding.ensureInitialized();
-    setWindowTitle('Navigation and routing');
-    setWindowMinSize(const Size(windowWidth, windowHeight));
-    setWindowMaxSize(const Size(windowWidth, windowHeight));
-    getCurrentScreen().then((screen) {
-      setWindowFrame(Rect.fromCenter(
-        center: screen!.frame.center,
-        width: windowWidth,
-        height: windowHeight,
-      ));
-    });
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My app title',
+      home: Home(),
+      //Aqui se agregan las rutas, para llamar es un widget 
+      routes: {
+        "/home": (context) => Home(),
+        "/app1": (context) => Bookstore(),
+
+      }, 
+
+    );
   }
+}
+
+class Home extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Menú principal')
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              //copiar este boton para ir a la app 
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/app1');
+                }, 
+                child: const Text("App1"), 
+        )],),
+        )
+      );
+  }
+
 }

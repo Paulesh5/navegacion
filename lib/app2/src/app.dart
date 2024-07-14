@@ -53,7 +53,7 @@ class _BookstoreState extends State<Bookstore> {
           }
           return null;
         },
-        routes: [
+        routes:[
           ShellRoute(
             navigatorKey: appShellNavigatorKey,
             builder: (context, state, child) {

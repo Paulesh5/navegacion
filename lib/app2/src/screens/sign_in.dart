@@ -3,6 +3,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:navegacion/main.dart';
 
 class Credentials {
   final String username;
@@ -60,6 +62,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: const Text('Sign in'),
                     ),
                   ),
+                  TextButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()),);
+                  }, child: const Text("volver"))
                 ],
               ),
             ),

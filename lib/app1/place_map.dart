@@ -11,6 +11,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
+import 'package:navegacion/main.dart';
 
 import 'place.dart';
 import 'place_tracker_app.dart';
@@ -530,6 +531,12 @@ class _CategoryButtonBar extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 14.0),
                 ),
               ),
+              FilledButton(
+                style: FilledButton.styleFrom(
+                  backgroundColor: Colors.lightGreen),
+                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()),),
+                child: const Text("Volver"),
+              )
             ],
           ),
         ),

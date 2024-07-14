@@ -74,7 +74,9 @@ class _PlaceTrackerHomePage extends StatelessWidget {
               child: Icon(Icons.pin_drop, size: 24.0),
             ),
             Text('Place Tracker'),
+            
           ],
+          
         ),
         actions: [
           Padding(
@@ -103,6 +105,7 @@ class _PlaceTrackerHomePage extends StatelessWidget {
           PlaceMap(center: LatLng(45.521563, -122.677433)),
           PlaceList()
         ],
+        
       ),
     );
   }

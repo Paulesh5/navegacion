@@ -52,6 +52,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
 
 dev_dependencies:
+  analysis_defaults:
+    path: ../analysis_defaults
+    
   flutter_test:
     sdk: flutter
   

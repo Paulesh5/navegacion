@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navegacion/app1/place_tracker_app.dart';
 import 'package:navegacion/app2/src/app.dart';
+import 'package:navegacion/app3/app3.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -15,14 +16,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My app title',
       home: Home(),
-      //Aqui se agregan las rutas, para llamar es un widget 
+      // Aquí se agregan las rutas, para llamar es un widget 
       routes: {
         "/home": (context) => Home(),
         "/app1": (context) => Bookstore(),
-        "/app2": (context) => ChangeNotifierProvider(create: (context)=> AppState(), child: const PlaceTrackerApp(),)
-
+        "/app2": (context) => ChangeNotifierProvider(create: (context) => AppState(), child: const PlaceTrackerApp(),),
+         "/app3": (context) => App3(), // Agrega la ruta para app3
       }, 
-
     );
   }
 }
@@ -38,7 +38,7 @@ class Home extends StatelessWidget{
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              //copiar este boton para ir a la app 
+              // Copiar este botón para ir a la app 
               TextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/app1');
@@ -50,10 +50,16 @@ class Home extends StatelessWidget{
                     Navigator.pushNamed(context, '/app2');
                   }, 
                   child: const Text("App2"), 
-                ),        
-        ],),
+                ),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/app3'); // Botón para ir a la app3
+                  }, 
+                  child: const Text("App3"), 
+                ), 
+            ],
+          ),
         )
       );
   }
-
 }
